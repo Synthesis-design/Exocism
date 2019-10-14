@@ -8,7 +8,8 @@ public class StartScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("희아 선배는 짱짱 멋진 선배님이다!");
+        //양심어디?
     }
 
     // Update is called once per frame
