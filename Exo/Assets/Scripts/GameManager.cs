@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private void Start()
+    public GameObject gotemp;
+    public System.TimeSpan compareTime;
+
+    private void Awake()
     {
-        System.DateTime nowTime = System.DateTime.Now;
-        Debug.Log(nowTime.Hour);
-        Debug.Log(nowTime.Minute);
-        Debug.Log(nowTime.Second);
+        string lastTime = PlayerPrefs.GetString("SaveLastTime");
+
+        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        compareTime = System.DateTime.Now - lastDateTime;
+
+        Debug.Log(compareTime.TotalSeconds);
+        
+      
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
     }
 }

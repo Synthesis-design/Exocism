@@ -7,8 +7,16 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour
 {
     public Text Stemina;
-    public float time=0.0f;
-    public float SteminaNum=0.0f; 
+    public double time=0.0f;
+    public double SteminaNum=0.0f;
+    
+
+    private void Start()
+    {
+        GameManager GameMgr= FindObjectOfType<GameManager>();
+
+        DateTime(GameMgr.compareTime.TotalSeconds);
+    }
 
     // Update is called once per frame
     private void Update()
@@ -89,6 +97,40 @@ public class StartScene : MonoBehaviour
             SceneManager.LoadScene("Stage5");
             Debug.Log("5번째 스테이지 오픈");
             SteminaNum--;
+        }
+    }
+
+    public void DateTime(double temp)
+    {
+        if (temp >= 0.0f && temp < 5.0f)
+        {
+            SteminaNum = 0;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 5.0f && temp<10.0f)
+        {
+            SteminaNum = 1;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 10.0f && temp < 15.0f)
+        {
+            SteminaNum = 2;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 15.0f && temp < 20.0f)
+        {
+            SteminaNum = 3;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 20.0f && temp < 25.0f)
+        {
+            SteminaNum = 4;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else
+        {
+            SteminaNum = 5;
+            Stemina.text = SteminaNum.ToString() + "/5";
         }
     }
 
