@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <Compile Include="Assets\Asset\2D Fantasy Character Pack\animate.cs" />
     <Compile Include="Assets\Scripts\edit.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -648,8 +647,6 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.7f2/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
 =======
-=======
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
      <Compile Include="Assets\Asset\2D Fantasy Character Pack\animate.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\LoadingSceneManager.cs" />
@@ -1226,9 +1223,6 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>E:/Program Files/Unity/Editor/2019.2.7f2/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
-<<<<<<< HEAD
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
-=======
 >>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

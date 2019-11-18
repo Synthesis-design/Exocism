@@ -126,11 +126,7 @@ MonoBehaviour:
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
 <<<<<<< HEAD
-<<<<<<< HEAD
   controlID: 97
-=======
-  controlID: 95
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
   controlID: 95
 >>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
@@ -242,11 +238,7 @@ MonoBehaviour:
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
   controlID: 127
-=======
-  controlID: 150
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
   controlID: 150
 >>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
@@ -346,11 +338,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_LastSelectedObjectID: 23220
-=======
-  m_LastSelectedObjectID: 17564
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
   m_LastSelectedObjectID: 17564
 >>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
@@ -562,11 +550,7 @@ MonoBehaviour:
     m_SelectedIDs: 205d0000
     m_LastClickedID: 23840
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_ExpandedIDs: 00000000c63e0000e6420000e2460000444b0000e84c00002a4d00009050000026540000305400008a5400009e5400000e5600003a560000a2570000205a0000225a0000245a0000265a0000285a00002a5a00002c5a00002e5a0000305a0000325a0000345a0000365a0000
-=======
-    m_ExpandedIDs: 00000000da2d0000f02d00000a3000003630000074300000fe3000000636000018370000f83700009a38000080390000623d0000fc3d0000b63e000050450000524500005445000056450000584500005a4500005c4500005e45000060450000624500006445000066450000
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
     m_ExpandedIDs: 00000000da2d0000f02d00000a3000003630000074300000fe3000000636000018370000f83700009a38000080390000623d0000fc3d0000b63e000050450000524500005445000056450000584500005a4500005c4500005e45000060450000624500006445000066450000
 >>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
@@ -595,21 +579,15 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
 <<<<<<< HEAD
-<<<<<<< HEAD
     scrollPos: {x: 0, y: 92}
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000c63e0000e6420000e2460000444b0000e84c00002a4d000090500000f251000026540000305400008a5400009e54000016550000de5500000e560000285600003a560000985700009a570000205a0000225a0000245a0000265a0000285a00002a5a00002c5a00002e5a0000305a0000325a0000345a0000365a0000
 =======
-=======
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
     scrollPos: {x: 0, y: 107}
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000da2d0000f02d00000a3000003630000074300000fe3000000636000018370000f83700009a38000080390000623d0000fc3d0000b63e000050450000524500005445000056450000584500005a4500005c4500005e45000060450000624500006445000066450000
-<<<<<<< HEAD
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
-=======
 >>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -734,15 +712,9 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
       m_SelectedIDs: b0ebfeff
       m_LastClickedID: -70736
       m_ExpandedIDs: 62bcffffd6bdffff7e5a0000985a00009c5a0000d85a0000
-=======
-      m_SelectedIDs: 9c440000
-      m_LastClickedID: 17564
-      m_ExpandedIDs: 6afbffff124400002e4400008a44000092440000
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
       m_SelectedIDs: 9c440000
       m_LastClickedID: 17564
@@ -808,15 +780,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_Target: {x: -2.1063166, y: -0.26719695, z: -0.7718952}
     speed: 2
     m_Value: {x: -2.1063166, y: -0.26719695, z: -0.7718952}
-=======
-    m_Target: {x: -1.0330334, y: -1.4366138, z: -7.6396704}
-    speed: 2
-    m_Value: {x: -1.0330334, y: -1.4366138, z: -7.6396704}
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
     m_Target: {x: -1.0330334, y: -1.4366138, z: -7.6396704}
     speed: 2
@@ -855,15 +821,9 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_Target: 10.704867
     speed: 2
     m_Value: 10.704867
-=======
-    m_Target: 13.096113
-    speed: 2
-    m_Value: 13.096113
->>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
 =======
     m_Target: 13.096113
     speed: 2
