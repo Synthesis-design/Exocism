@@ -8,7 +8,16 @@ public class StartScene : MonoBehaviour
 {
     public Text Stemina;
     public float time=0.0f;
-    public float SteminaNum=0.0f; 
+    public float SteminaNum=0.0f;
+    
+
+    private void Start()
+    {
+        GameManager GameMgr= FindObjectOfType<GameManager>();
+
+        SteminaNum = GameMgr.StartStemina;
+        DateTime(GameMgr.compareTime.TotalSeconds);
+    }
 
     // Update is called once per frame
     private void Update()
@@ -17,13 +26,18 @@ public class StartScene : MonoBehaviour
         {
             time += Time.deltaTime;
 
-            if (time > 5.0f && time < 6.0f)
+            if (time > 300.0f && time < 301.0f)
             {
                 SteminaNum++;
 
                 Stemina.text = SteminaNum.ToString() + "/5";
                 time = 0.0f;
             }
+        }
+        else
+        {
+            SteminaNum = 5.0f;
+            Stemina.text = SteminaNum.ToString() + "/5";
         }
         
     }
@@ -89,6 +103,40 @@ public class StartScene : MonoBehaviour
             SceneManager.LoadScene("Stage5");
             Debug.Log("5번째 스테이지 오픈");
             SteminaNum--;
+        }
+    }
+
+    public void DateTime(double temp)
+    {
+        if (temp >= 0.0f && temp < 300.0f)
+        {
+            SteminaNum += 0;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 300.0f && temp<600.0f)
+        {
+            SteminaNum += 1;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 600.0f && temp < 900.0f)
+        {
+            SteminaNum += 2;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 900.0f && temp < 1200.0f)
+        {
+            SteminaNum += 3;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else if (temp >= 1200.0f && temp < 1500.0f)
+        {
+            SteminaNum += 4;
+            Stemina.text = SteminaNum.ToString() + "/5";
+        }
+        else
+        {
+            SteminaNum += 5;
+            Stemina.text = SteminaNum.ToString() + "/5";
         }
     }
 

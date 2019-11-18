@@ -4,11 +4,32 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+<<<<<<< HEAD
+    public bool edit_mode = false;
     private void Start()
+=======
+    public System.TimeSpan compareTime;
+    public float StartStemina;
+
+    private void Awake()
+>>>>>>> 8ca238d7da56d99630020833323fb2aeb83539af
     {
-        System.DateTime nowTime = System.DateTime.Now;
-        Debug.Log(nowTime.Hour);
-        Debug.Log(nowTime.Minute);
-        Debug.Log(nowTime.Second);
+        string lastTime = PlayerPrefs.GetString("SaveLastTime");
+
+        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        compareTime = System.DateTime.Now - lastDateTime;
+
+        Debug.Log(compareTime.TotalSeconds);
+
+        StartStemina = PlayerPrefs.GetFloat("SteminaNum");
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
+
+        StartScene ST_S = FindObjectOfType<StartScene>();
+
+        PlayerPrefs.SetFloat("SteminaNum", ST_S.SteminaNum);
     }
 }

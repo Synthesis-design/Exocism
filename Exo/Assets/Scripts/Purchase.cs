@@ -6,7 +6,6 @@ public class Purchase : MonoBehaviour
 {
     GameObject buyPrefab;
     public Transform gridPos;
-    int count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +23,30 @@ public class Purchase : MonoBehaviour
     {
         buyPrefab = Resources.Load<GameObject>("knight");
         
-        GameObject player = Instantiate(buyPrefab);
+        GameObject player = Instantiate(buyPrefab) as GameObject; 
 
-        RectTransform playerPos = player.GetComponent<RectTransform>();
 
-        player.transform.position = gameObject.transform.position;
+        player.AddComponent<SpriteOutline>();
+        player.GetComponent<SpriteOutline>().enabled = false;
+        player.AddComponent<BoxCollider2D>();
+        player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+
+        player.tag = "Player";
+
     }
 
     public void getWizard()
     {
         buyPrefab = Resources.Load<GameObject>("mage_dark");
 
-        GameObject player = Instantiate(buyPrefab);
+        GameObject player = Instantiate(buyPrefab) as GameObject;
 
-        RectTransform playerPos = player.GetComponent<RectTransform>();
+        player.AddComponent<SpriteOutline>();
+        player.GetComponent<SpriteOutline>().enabled = false;
+        player.AddComponent<BoxCollider2D>();
+        player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
 
-        player.transform.position = gameObject.transform.position;
+        player.tag = "Player";
 
     }
 
@@ -47,11 +54,14 @@ public class Purchase : MonoBehaviour
     {
         buyPrefab = Resources.Load<GameObject>("archer2");
 
-        GameObject player = Instantiate(buyPrefab);
+        GameObject player = Instantiate(buyPrefab) as GameObject;
 
-        RectTransform playerPos = player.GetComponent<RectTransform>();
+        player.AddComponent<SpriteOutline>();
+        player.GetComponent<SpriteOutline>().enabled = false;
+        player.AddComponent<BoxCollider2D>();
+        player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
 
-        player.transform.position = gameObject.transform.position;
+        player.tag = "Player";
 
     }
 
