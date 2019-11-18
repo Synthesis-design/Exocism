@@ -62,10 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\New Folder\2D Fantasy Character Pack\animate.cs" />
+    <Compile Include="Assets\Asset\2D Fantasy Character Pack\animate.cs" />
     <Compile Include="Assets\Scripts\LoadingSceneManager.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Purchase.cs" />
+    <Compile Include="Assets\Scripts\SpriteOutline.cs" />
     <Compile Include="Assets\Scripts\StartScene.cs" />
-    <None Include="Assets\New Folder\Backyard - Free\Readme.txt" />
+    <None Include="Assets\Asset\Backyard - Free\Readme.txt" />
+    <None Include="Assets\Shaders\Sprite-Outline.shader.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/khak1/OneDrive/바탕 화면/2019년 2학기/종합설계/Exocism/Exocism/Exo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
