@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gotemp;
     public System.TimeSpan compareTime;
+    public float StartStemina;
 
     private void Awake()
     {
@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour
         compareTime = System.DateTime.Now - lastDateTime;
 
         Debug.Log(compareTime.TotalSeconds);
-        
-      
+
+        StartStemina = PlayerPrefs.GetFloat("SteminaNum");
     }
 
     private void OnDestroy()
     {
         PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
+
+        StartScene ST_S = FindObjectOfType<StartScene>();
+
+        PlayerPrefs.SetFloat("SteminaNum", ST_S.SteminaNum);
     }
 }

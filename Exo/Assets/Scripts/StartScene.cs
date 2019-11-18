@@ -7,14 +7,15 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour
 {
     public Text Stemina;
-    public double time=0.0f;
-    public double SteminaNum=0.0f;
+    public float time=0.0f;
+    public float SteminaNum=0.0f;
     
 
     private void Start()
     {
         GameManager GameMgr= FindObjectOfType<GameManager>();
 
+        SteminaNum = GameMgr.StartStemina;
         DateTime(GameMgr.compareTime.TotalSeconds);
     }
 
@@ -25,13 +26,18 @@ public class StartScene : MonoBehaviour
         {
             time += Time.deltaTime;
 
-            if (time > 5.0f && time < 6.0f)
+            if (time > 300.0f && time < 301.0f)
             {
                 SteminaNum++;
 
                 Stemina.text = SteminaNum.ToString() + "/5";
                 time = 0.0f;
             }
+        }
+        else
+        {
+            SteminaNum = 5.0f;
+            Stemina.text = SteminaNum.ToString() + "/5";
         }
         
     }
@@ -102,34 +108,34 @@ public class StartScene : MonoBehaviour
 
     public void DateTime(double temp)
     {
-        if (temp >= 0.0f && temp < 5.0f)
+        if (temp >= 0.0f && temp < 300.0f)
         {
-            SteminaNum = 0;
+            SteminaNum += 0;
             Stemina.text = SteminaNum.ToString() + "/5";
         }
-        else if (temp >= 5.0f && temp<10.0f)
+        else if (temp >= 300.0f && temp<600.0f)
         {
-            SteminaNum = 1;
+            SteminaNum += 1;
             Stemina.text = SteminaNum.ToString() + "/5";
         }
-        else if (temp >= 10.0f && temp < 15.0f)
+        else if (temp >= 600.0f && temp < 900.0f)
         {
-            SteminaNum = 2;
+            SteminaNum += 2;
             Stemina.text = SteminaNum.ToString() + "/5";
         }
-        else if (temp >= 15.0f && temp < 20.0f)
+        else if (temp >= 900.0f && temp < 1200.0f)
         {
-            SteminaNum = 3;
+            SteminaNum += 3;
             Stemina.text = SteminaNum.ToString() + "/5";
         }
-        else if (temp >= 20.0f && temp < 25.0f)
+        else if (temp >= 1200.0f && temp < 1500.0f)
         {
-            SteminaNum = 4;
+            SteminaNum += 4;
             Stemina.text = SteminaNum.ToString() + "/5";
         }
         else
         {
-            SteminaNum = 5;
+            SteminaNum += 5;
             Stemina.text = SteminaNum.ToString() + "/5";
         }
     }
