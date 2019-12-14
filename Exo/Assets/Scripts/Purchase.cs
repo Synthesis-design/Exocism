@@ -23,13 +23,18 @@ public class Purchase : MonoBehaviour
     {
         buyPrefab = Resources.Load<GameObject>("knight");
         
-        GameObject player = Instantiate(buyPrefab) as GameObject; 
+        GameObject player = Instantiate(buyPrefab) as GameObject;
+        GameObject objChk;
+        float insX = -8.5f;
+        float insY = 3.5f;
 
 
         player.AddComponent<SpriteOutline>();
         player.GetComponent<SpriteOutline>().enabled = false;
         player.AddComponent<BoxCollider2D>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+        player.AddComponent<Drag>();
+        
 
         player.tag = "Player";
 
@@ -45,6 +50,7 @@ public class Purchase : MonoBehaviour
         player.GetComponent<SpriteOutline>().enabled = false;
         player.AddComponent<BoxCollider2D>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+        player.AddComponent<Drag>();
 
         player.tag = "Player";
 
@@ -60,6 +66,7 @@ public class Purchase : MonoBehaviour
         player.GetComponent<SpriteOutline>().enabled = false;
         player.AddComponent<BoxCollider2D>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+        player.AddComponent<Drag>();
 
         player.tag = "Player";
 
