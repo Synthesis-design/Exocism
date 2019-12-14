@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Purchase : MonoBehaviour
 {
     GameObject buyPrefab;
     public Transform gridPos;
- 
+    
+    Stage stage;
 
+    int cost; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -23,6 +25,20 @@ public class Purchase : MonoBehaviour
 
     public void getKnight()
     {
+        stage = GameObject.Find("Canvas").GetComponent<Stage>();
+
+        cost = 1;
+        if ((stage.money - cost) >= 0)
+        { stage.money = stage.money - cost; }
+        else
+        {
+            Debug.Log("돈 없음");
+            stage.NoMoneyAlert();
+            return;
+        }
+
+  
+
         buyPrefab = Resources.Load<GameObject>("knight");
         
         GameObject player = Instantiate(buyPrefab) as GameObject;
@@ -59,10 +75,23 @@ public class Purchase : MonoBehaviour
 
         player.tag = "Player";
 
+
     }
 
     public void getWizard()
     {
+        stage = GameObject.Find("Canvas").GetComponent<Stage>();
+
+        cost = 2;
+        if ((stage.money - cost) >= 0)
+        { stage.money = stage.money - cost; }
+        else
+        {
+            Debug.Log("돈 없음");
+            stage.NoMoneyAlert();
+            return;
+        }
+
         buyPrefab = Resources.Load<GameObject>("mage_dark");
 
         GameObject player = Instantiate(buyPrefab) as GameObject;
@@ -103,6 +132,18 @@ public class Purchase : MonoBehaviour
 
     public void getArcher()
     {
+        stage = GameObject.Find("Canvas").GetComponent<Stage>();
+
+        cost = 2;
+        if ((stage.money - cost) >= 0)
+        { stage.money = stage.money - cost; }
+        else
+        {
+            Debug.Log("돈 없음");
+            stage.NoMoneyAlert();
+            return;
+        }
+
         buyPrefab = Resources.Load<GameObject>("archer2");
 
         GameObject player = Instantiate(buyPrefab) as GameObject;
@@ -140,6 +181,8 @@ public class Purchase : MonoBehaviour
         player.tag = "Player";
 
     }
+
+    
 
 
 }

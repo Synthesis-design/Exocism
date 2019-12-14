@@ -64,11 +64,11 @@
   <ItemGroup>
     <Compile Include="Assets\Asset\2D Fantasy Character Pack\animate.cs" />
     <Compile Include="Assets\Scripts\Drag.cs" />
-    <Compile Include="Assets\Scripts\edit.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LoadingSceneManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Purchase.cs" />
+    <Compile Include="Assets\Scripts\Stage.cs" />
     <Compile Include="Assets\Scripts\StartScene.cs" />
     <None Include="Assets\Asset\Backyard - Free\Readme.txt" />
     <None Include="Assets\Shaders\Sprite-Outline.shader.shader" />
