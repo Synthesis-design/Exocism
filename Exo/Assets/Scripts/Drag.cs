@@ -6,11 +6,28 @@ public class Drag : MonoBehaviour
 {
     private Vector3 screenSpace;
     private Vector3 offset;
+    public Color color;
+
+    [Range(0, 16)]
+    public int outlineSize = 1;
+
+    private SpriteRenderer spriteRenderer;
+
+    void OnEnable()
+    {
+        
+    }
     private void OnMouseDown()
     {
         Debug.Log("터치");
         screenSpace = Camera.main.WorldToScreenPoint(transform.position);
         offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        color = Color.white;
+
+        UpdateOutline(true);
 
     }
 
@@ -33,7 +50,19 @@ public class Drag : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        
+        color = Color.black;
+
+        UpdateOutline(true);
+    }
+
+    void UpdateOutline(bool outline)
+    {
+        MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+        spriteRenderer.GetPropertyBlock(mpb);
+        mpb.SetFloat("_Outline", outline ? 1f : 0);
+        mpb.SetColor("_OutlineColor", color);
+        mpb.SetFloat("_OutlineSize", outlineSize);
+        spriteRenderer.SetPropertyBlock(mpb);
     }
 
 }

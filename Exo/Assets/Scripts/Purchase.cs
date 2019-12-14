@@ -6,6 +6,8 @@ public class Purchase : MonoBehaviour
 {
     GameObject buyPrefab;
     public Transform gridPos;
+ 
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +26,35 @@ public class Purchase : MonoBehaviour
         buyPrefab = Resources.Load<GameObject>("knight");
         
         GameObject player = Instantiate(buyPrefab) as GameObject;
-        GameObject objChk;
-        float insX = -8.5f;
-        float insY = 3.5f;
+
+        Vector3 playerPos = gameObject.transform.position;
+        playerPos.x = -8.5f;
+        playerPos.y = 3.5f;
+        playerPos.z = 0.0f;
+
+        player.transform.position = playerPos;
 
 
-        player.AddComponent<SpriteOutline>();
-        player.GetComponent<SpriteOutline>().enabled = false;
-        player.AddComponent<BoxCollider2D>();
+        Collider[] colls = Physics.OverlapSphere(player.transform.position, 7.0f);
+
+        for(int i=0;i<colls.Length;i++)
+        {
+            playerPos.y = playerPos.y - 1f;
+            Debug.Log(playerPos.y);
+            if (playerPos.y < -2.5)
+            {
+                playerPos.x = playerPos.x + 1f;
+                playerPos.y = 3.5f;
+                Debug.Log("다시 되돌아옴");
+            }
+        }
+
+        player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+
+        player.transform.position = playerPos;
+
         
 
         player.tag = "Player";
@@ -46,11 +67,35 @@ public class Purchase : MonoBehaviour
 
         GameObject player = Instantiate(buyPrefab) as GameObject;
 
-        player.AddComponent<SpriteOutline>();
-        player.GetComponent<SpriteOutline>().enabled = false;
-        player.AddComponent<BoxCollider2D>();
+        Vector3 playerPos = gameObject.transform.position;
+        playerPos.x = -8.5f;
+        playerPos.y = 3.5f;
+        playerPos.z = 0.0f;
+
+        player.transform.position = playerPos;
+
+
+        Collider[] colls = Physics.OverlapSphere(player.transform.position, 7.0f);
+
+        for (int i = 0; i < colls.Length; i++)
+        {
+            playerPos.y = playerPos.y - 1f;
+            Debug.Log(playerPos.y);
+            if (playerPos.y < -2.5)
+            {
+                playerPos.x = playerPos.x + 1f;
+                playerPos.y = 3.5f;
+                Debug.Log("다시 되돌아옴");
+            }
+        }
+
+        player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+
+        player.transform.position = playerPos;
+
+
 
         player.tag = "Player";
 
@@ -62,11 +107,35 @@ public class Purchase : MonoBehaviour
 
         GameObject player = Instantiate(buyPrefab) as GameObject;
 
-        player.AddComponent<SpriteOutline>();
-        player.GetComponent<SpriteOutline>().enabled = false;
-        player.AddComponent<BoxCollider2D>();
+        Vector3 playerPos = gameObject.transform.position;
+        playerPos.x = -8.5f;
+        playerPos.y = 3.5f;
+        playerPos.z = 0.0f;
+
+        player.transform.position = playerPos;
+
+
+        Collider[] colls = Physics.OverlapSphere(player.transform.position, 7.0f);
+
+        for (int i = 0; i < colls.Length; i++)
+        {
+            playerPos.y = playerPos.y - 1f;
+            Debug.Log(playerPos.y);
+            if (playerPos.y < -2.5)
+            {
+                playerPos.x = playerPos.x + 1f;
+                playerPos.y = 3.5f;
+                Debug.Log("다시 되돌아옴");
+            }
+        }
+
+        player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+
+        player.transform.position = playerPos;
+
+
 
         player.tag = "Player";
 
