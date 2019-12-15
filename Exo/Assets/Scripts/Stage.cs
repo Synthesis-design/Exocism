@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Stage : MonoBehaviour
 {
-    public int money = 5;
+    public int money ;
     public Text moneyTxt;
     public Text Nomoney;
+    string sceneName;
 
-    // Start is called before the first frame update
+     // Start is called before the first frame update
     void Start()
     {
+        GiveMoney();
         SetTxt();
     }
 
@@ -19,6 +22,40 @@ public class Stage : MonoBehaviour
     void Update()
     {
         SetTxt();
+    }
+
+    void GiveMoney()
+    {
+        sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "stage1":
+                money = 5;
+                break;
+            case "stage2":
+                money = 8;
+                break;
+            case "stage3":
+                money = 5;
+                break;
+            case "stage4":
+                money = 8;
+                break;
+            case "stage5":
+                money = 8;
+                break;
+            case "stage6":
+                money = 8;
+                break;
+            case "stage7":
+                money = 8;
+                break;
+            case "stage8":
+                money = 8;
+                break;
+
+        }
+
     }
 
     void SetTxt()

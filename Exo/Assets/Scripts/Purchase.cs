@@ -39,7 +39,7 @@ public class Purchase : MonoBehaviour
 
   
 
-        buyPrefab = Resources.Load<GameObject>("knight");
+        buyPrefab = Resources.Load<GameObject>("Knight");
         
         GameObject player = Instantiate(buyPrefab) as GameObject;
 
@@ -92,7 +92,7 @@ public class Purchase : MonoBehaviour
             return;
         }
 
-        buyPrefab = Resources.Load<GameObject>("mage_dark");
+        buyPrefab = Resources.Load<GameObject>("Wizard");
 
         GameObject player = Instantiate(buyPrefab) as GameObject;
 
@@ -144,7 +144,7 @@ public class Purchase : MonoBehaviour
             return;
         }
 
-        buyPrefab = Resources.Load<GameObject>("archer2");
+        buyPrefab = Resources.Load<GameObject>("Archer");
 
         GameObject player = Instantiate(buyPrefab) as GameObject;
 
@@ -182,7 +182,166 @@ public class Purchase : MonoBehaviour
 
     }
 
-    
+    public void getAssassin()
+    {
+        stage = GameObject.Find("Canvas").GetComponent<Stage>();
+
+        cost = 3;
+        if ((stage.money - cost) >= 0)
+        { stage.money = stage.money - cost; }
+        else
+        {
+            Debug.Log("돈 없음");
+            stage.NoMoneyAlert();
+            return;
+        }
+
+
+
+        buyPrefab = Resources.Load<GameObject>("Assassin");
+
+        GameObject player = Instantiate(buyPrefab) as GameObject;
+
+        Vector3 playerPos = gameObject.transform.position;
+        playerPos.x = -8.5f;
+        playerPos.y = 3.5f;
+        playerPos.z = 0.0f;
+
+        player.transform.position = playerPos;
+
+
+        Collider[] colls = Physics.OverlapSphere(player.transform.position, 7.0f);
+
+        for (int i = 0; i < colls.Length; i++)
+        {
+            playerPos.y = playerPos.y - 1f;
+            Debug.Log(playerPos.y);
+            if (playerPos.y < -2.5)
+            {
+                playerPos.x = playerPos.x + 1f;
+                playerPos.y = 3.5f;
+                Debug.Log("다시 되돌아옴");
+            }
+        }
+
+        player.AddComponent<BoxCollider>();
+        player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+        player.AddComponent<Drag>();
+
+        player.transform.position = playerPos;
+
+
+
+        player.tag = "Player";
+
+
+    }
+
+    public void getHwang()
+    {
+        stage = GameObject.Find("Canvas").GetComponent<Stage>();
+
+        cost = 1;
+        if ((stage.money - cost) >= 0)
+        { stage.money = stage.money - cost; }
+        else
+        {
+            Debug.Log("돈 없음");
+            stage.NoMoneyAlert();
+            return;
+        }
+
+        buyPrefab = Resources.Load<GameObject>("Hwang");
+
+        GameObject player = Instantiate(buyPrefab) as GameObject;
+
+        Vector3 playerPos = gameObject.transform.position;
+        playerPos.x = -8.5f;
+        playerPos.y = 3.5f;
+        playerPos.z = 0.0f;
+
+        player.transform.position = playerPos;
+
+
+        Collider[] colls = Physics.OverlapSphere(player.transform.position, 7.0f);
+
+        for (int i = 0; i < colls.Length; i++)
+        {
+            playerPos.y = playerPos.y - 1f;
+            Debug.Log(playerPos.y);
+            if (playerPos.y < -2.5)
+            {
+                playerPos.x = playerPos.x + 1f;
+                playerPos.y = 3.5f;
+                Debug.Log("다시 되돌아옴");
+            }
+        }
+
+        player.AddComponent<BoxCollider>();
+        player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+        player.AddComponent<Drag>();
+
+        player.transform.position = playerPos;
+
+
+
+        player.tag = "Player";
+
+    }
+
+    public void getKing()
+    {
+        stage = GameObject.Find("Canvas").GetComponent<Stage>();
+
+        cost = 4;
+        if ((stage.money - cost) >= 0)
+        { stage.money = stage.money - cost; }
+        else
+        {
+            Debug.Log("돈 없음");
+            stage.NoMoneyAlert();
+            return;
+        }
+
+        buyPrefab = Resources.Load<GameObject>("King");
+
+        GameObject player = Instantiate(buyPrefab) as GameObject;
+
+        Vector3 playerPos = gameObject.transform.position;
+        playerPos.x = -8.5f;
+        playerPos.y = 3.5f;
+        playerPos.z = 0.0f;
+
+        player.transform.position = playerPos;
+
+
+        Collider[] colls = Physics.OverlapSphere(player.transform.position, 7.0f);
+
+        for (int i = 0; i < colls.Length; i++)
+        {
+            playerPos.y = playerPos.y - 1f;
+            Debug.Log(playerPos.y);
+            if (playerPos.y < -2.5)
+            {
+                playerPos.x = playerPos.x + 1f;
+                playerPos.y = 3.5f;
+                Debug.Log("다시 되돌아옴");
+            }
+        }
+
+        player.AddComponent<BoxCollider>();
+        player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
+        player.AddComponent<Drag>();
+
+        player.transform.position = playerPos;
+
+
+
+        player.tag = "Player";
+
+    }
+
+
 
 
 }
