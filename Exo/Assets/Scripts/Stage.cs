@@ -9,8 +9,10 @@ public class Stage : MonoBehaviour
     public int money ;
     public Text moneyTxt;
     public Text Nomoney;
-    string sceneName;
+    public Text infomsg1;
 
+    string sceneName;
+    Purchase pur;
      // Start is called before the first frame update
     void Start()
     {
@@ -27,35 +29,42 @@ public class Stage : MonoBehaviour
     void GiveMoney()
     {
         sceneName = SceneManager.GetActiveScene().name;
+        Debug.Log(sceneName);
         switch (sceneName)
         {
-            case "stage1":
-                money = 5;
+            case "Stage1":
+                money = 0;
+
                 break;
-            case "stage2":
+            case "Stage2":
+                money = 0;
+                break;
+            case "Stage3":
+                money = 0;
+                break;
+            case "Stage4":
                 money = 8;
                 break;
-            case "stage3":
-                money = 5;
-                break;
-            case "stage4":
+            case "Stage5":
                 money = 8;
                 break;
-            case "stage5":
+            case "Stage6":
                 money = 8;
                 break;
-            case "stage6":
+            case "Stage7":
                 money = 8;
                 break;
-            case "stage7":
-                money = 8;
-                break;
-            case "stage8":
+            case "Stage8":
                 money = 8;
                 break;
 
         }
+        StartCoroutine(InfoDelay());
 
+    }
+
+    void StageStart()
+    {
     }
 
     void SetTxt()
@@ -78,4 +87,11 @@ public class Stage : MonoBehaviour
         Nomoney.enabled = false;
 
     }
+
+    IEnumerator InfoDelay()
+    {
+        yield return new WaitForSeconds(5.0f);
+        infomsg1.enabled = false;
+    }
+
 }
