@@ -29,4 +29,9 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetFloat("SteminaNum", ST_S.SteminaNum);
     }
+
+    public void OnClickQuit()
+    {
+        Application.Quit();
+    }
 }
