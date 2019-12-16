@@ -29,7 +29,6 @@ public class Stage : MonoBehaviour
     void GiveMoney()
     {
         sceneName = SceneManager.GetActiveScene().name;
-        Debug.Log(sceneName);
         switch (sceneName)
         {
             case "Stage1":

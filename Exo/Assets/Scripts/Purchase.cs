@@ -73,7 +73,7 @@ public class Purchase : MonoBehaviour
 
         
 
-        player.tag = "Player";
+        player.tag = "Knight";
 
 
     }
@@ -126,7 +126,7 @@ public class Purchase : MonoBehaviour
 
 
 
-        player.tag = "Player";
+        player.tag = "Wizard";
 
     }
 
@@ -178,7 +178,7 @@ public class Purchase : MonoBehaviour
 
 
 
-        player.tag = "Player";
+        player.tag = "Archer";
 
     }
 
@@ -232,7 +232,7 @@ public class Purchase : MonoBehaviour
 
 
 
-        player.tag = "Player";
+        player.tag = "Assassin";
 
 
     }
@@ -285,7 +285,7 @@ public class Purchase : MonoBehaviour
 
 
 
-        player.tag = "Player";
+        player.tag = "Hwang";
 
     }
 
@@ -337,7 +337,7 @@ public class Purchase : MonoBehaviour
 
 
 
-        player.tag = "Player";
+        player.tag = "King";
 
     }
 
