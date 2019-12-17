@@ -99,6 +99,8 @@ public class StartGame : MonoBehaviour
         {
             SkeletonMove(Skeleton[i], Knight, Assassin,Archer, Wizard, King, Hwang);
         }
+
+        
         
 
         StartCoroutine(defUpdate());
@@ -177,6 +179,7 @@ public class StartGame : MonoBehaviour
             {
                 if (Knight[t].transform.position == detectPos[j])
                 {
+                    HwnagAtk(Hwang, Knight[t]);
                     return;
                 }
             }
@@ -188,6 +191,7 @@ public class StartGame : MonoBehaviour
             {
                 if (Assassin[t].transform.position == detectPos[j])
                 {
+                    HwnagAtk(Hwang, Assassin[t]);
                     return;
                 }
             }
@@ -199,6 +203,7 @@ public class StartGame : MonoBehaviour
             {
                 if (Archer[t].transform.position == detectPos[j])
                 {
+                    HwnagAtk(Hwang, Archer[t]);
                     return;
                 }
             }
@@ -210,6 +215,7 @@ public class StartGame : MonoBehaviour
             {
                 if (oHwang[t].transform.position == detectPos[j])
                 {
+                    HwnagAtk(Hwang, oHwang[t]);
                     return;
                 }
             }
@@ -221,6 +227,7 @@ public class StartGame : MonoBehaviour
             {
                 if (Wizard[t].transform.position == detectPos[j])
                 {
+                    HwnagAtk(Hwang, Wizard[t]);
                     return;
                 }
             }
@@ -232,6 +239,7 @@ public class StartGame : MonoBehaviour
             {
                 if (King[t].transform.position == detectPos[j])
                 {
+                    HwnagAtk(Hwang, King[t]);
                     return;
                 }
             }
@@ -586,6 +594,43 @@ public class StartGame : MonoBehaviour
 
         Skeleton.transform.position = changePos;
 
+    }
+
+    void HwnagAtk(GameObject Hwang, GameObject player)
+    {
+        hwanginfo = Hwang.GetComponent<Hwang>();
+        if (player.name == "knight")
+        {
+            knightinfo = player.GetComponent<Knight>();
+            knightinfo.atk += hwanginfo.atk;
+        }
+        if (player.name == "Archer")
+        {
+            archerinfo = player.GetComponent<Archer>();
+            archerinfo.atk += hwanginfo.atk;
+        }
+        if (player.name == "Assassin")
+        {
+            assassininfo = player.GetComponent<Assassin>();
+            assassininfo.atk += hwanginfo.atk;
+
+        }
+        if (player.name == "Hwang")
+        {
+            hwanginfo = player.GetComponent<Hwang>();
+            hwanginfo.atk += hwanginfo.atk;
+
+        }
+        if (player.name == "Wizard")
+        {
+            wizardinfo = player.GetComponent<Wizard>();
+            wizardinfo.atk += hwanginfo.atk;
+        }
+        if (player.name == "King")
+        {
+            kinginfo = player.GetComponent<King>();
+            kinginfo.atk += hwanginfo.atk;
+        }
     }
 
     void SkeletonAtk(GameObject Skeleton, GameObject player, Knight knightinfo, Archer archerinfo, Assassin assassininfo, Wizard wizardinfo, Hwang hwanginfo, King kinginfo, Skeleton Enemyinfo)
