@@ -34,7 +34,10 @@ public class HidePanel : MonoBehaviour
         else
         {
             Buy.SetActive(false);
-            Info.SetActive(false);
+            if (Info != null)
+            {
+                Info.SetActive(false);
+            }
             abu.gameObject.SetActive(true);
             pur.gameObject.SetActive(false);
         }

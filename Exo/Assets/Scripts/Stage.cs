@@ -9,7 +9,7 @@ public class Stage : MonoBehaviour
     public int money ;
     public Text moneyTxt;
     public Text Nomoney;
-    public Text infomsg1;
+    public Text infomsg;
 
     string sceneName;
     Purchase pur;
@@ -58,7 +58,9 @@ public class Stage : MonoBehaviour
                 break;
 
         }
-        StartCoroutine(InfoDelay());
+        if (infomsg != null) {
+            StartCoroutine(InfoDelay());
+        }
 
     }
 
@@ -90,7 +92,7 @@ public class Stage : MonoBehaviour
     IEnumerator InfoDelay()
     {
         yield return new WaitForSeconds(5.0f);
-        infomsg1.enabled = false;
+        infomsg.enabled = false;
     }
 
 }
