@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void OnClickReturn()
     {
         SceneManager.LoadScene("StartScene");
+        Time.timeScale = 1;
     }
 
     public GameObject Menu;
