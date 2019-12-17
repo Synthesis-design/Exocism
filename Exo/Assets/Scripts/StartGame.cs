@@ -22,6 +22,8 @@ public class StartGame : MonoBehaviour
     float chWizardDiry = 1f;
     float chSkelDir = -1f;
     int Jumpcnt = 0;
+    public GameObject victory;
+    public GameObject defeat;
 
     void Start()
     {
@@ -100,7 +102,14 @@ public class StartGame : MonoBehaviour
             SkeletonMove(Skeleton[i], Knight, Assassin,Archer, Wizard, King, Hwang);
         }
 
-        
+        if (Knight.Length == 0 && Hwang.Length == 0 && Archer.Length == 0 && Wizard.Length == 0 && Assassin.Length == 0 && King.Length == 0)
+        {
+            defeat.SetActive(true);
+        }
+        else if (Skeleton.Length == 0)
+        {
+            victory.SetActive(true);
+        }
         
 
         StartCoroutine(defUpdate());
@@ -254,8 +263,7 @@ public class StartGame : MonoBehaviour
 
         changePos = Archer.transform.position;
         if (Archer.transform.position.y == 3.5f)
-        {
-
+        { 
             chArcherDir = -1f;
         }
         else if (Archer.transform.position.y == -2.5f)
@@ -696,6 +704,8 @@ public class StartGame : MonoBehaviour
 
         
     }
+
+
 
     IEnumerator defUpdate()
     {

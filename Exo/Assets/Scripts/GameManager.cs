@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void OnClickReturn()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("Map");
         Time.timeScale = 1;
     }
 

@@ -45,9 +45,10 @@ public class StartScene : MonoBehaviour
 
     public void OnAnyBtnClick()
     {
-        Menu.SetActive(true);
-        Info.SetActive(false);
-        Title.SetActive(false);
+        //Menu.SetActive(true);
+        //Info.SetActive(false);
+        //Title.SetActive(false);
+        SceneManager.LoadScene("Map");
     }
     
     //좀 더 간결하게 코드를 짜는 법은 없을까나
@@ -103,6 +104,42 @@ public class StartScene : MonoBehaviour
         {
             SceneManager.LoadScene("Stage5");
             Debug.Log("5번째 스테이지 오픈");
+            SteminaNum--;
+        }
+    }
+
+    public void Stage6()
+    {
+        if (SteminaNum == 0)
+            Debug.Log("불가능");
+        else
+        {
+            SceneManager.LoadScene("Stage6");
+            Debug.Log("6번째 스테이지 오픈");
+            SteminaNum--;
+        }
+    }
+
+    public void Stage7()
+    {
+        if (SteminaNum == 0)
+            Debug.Log("불가능");
+        else
+        {
+            SceneManager.LoadScene("Stage7");
+            Debug.Log("7번째 스테이지 오픈");
+            SteminaNum--;
+        }
+    }
+
+    public void Stage8()
+    {
+        if (SteminaNum == 0)
+            Debug.Log("불가능");
+        else
+        {
+            SceneManager.LoadScene("Stage8");
+            Debug.Log("8번째 스테이지 오픈");
             SteminaNum--;
         }
     }
