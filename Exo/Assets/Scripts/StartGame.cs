@@ -23,9 +23,25 @@ public class StartGame : MonoBehaviour
     float chSkelDir = -1f;
     int Jumpcnt = 0;
 
+    Animator Assassinanim;
+    Animator Knightanim;
+    Animator Archeranim;
+    Animator Wizardanim;
+    Animator Hwanganim;
+    Animator Kinganim;
+    Animator Enemyanim;
+
+
+
     void Start()
     {
         detectEnemy();
+        Assassinanim = GameObject.FindGameObjectWithTag("Assassin").GetComponent<Animator>();
+        //Knightanim = GameObject.FindGameObjectWithTag("Knight").GetComponent<Animator>();
+        Archeranim = GameObject.FindGameObjectWithTag("Archer").GetComponent<Animator>();
+        //Wizardanim = GameObject.FindGameObjectWithTag("Wizard").GetComponent<Animator>();
+        
+
     }
 
     void Update()
@@ -372,12 +388,6 @@ public class StartGame : MonoBehaviour
             detectPos[j].x += j % 3;
             detectPos[j].y -= j / 3;
         }
-
-        for( int i = 0; i < 9; i++)
-        {
-            Debug.Log(i);
-            Debug.Log(detectPos[i]);
-        }
         
 
         changePos.x += chWizardDirx;
@@ -409,10 +419,16 @@ public class StartGame : MonoBehaviour
         Enemyinfo = Skeleton.GetComponent<Skeleton>();
 
         Enemyinfo.hp -= info.atk;
-        if(Enemyinfo.hp <= 0)
+
+        Debug.Log("때림");
+        Knightanim = Knight.GetComponent<Animator>();
+        Knightanim.SetTrigger("atk");
+        if (Enemyinfo.hp <= 0)
         {
             Destroy(Skeleton);
         }
+        Knightanim.SetTrigger("idle");
+
     }
 
     void ArcherAtk(GameObject Archer, GameObject Skeleton, Archer info, Skeleton Enemyinfo)
@@ -421,15 +437,18 @@ public class StartGame : MonoBehaviour
         Enemyinfo = Skeleton.GetComponent<Skeleton>();
 
         Enemyinfo.hp -= info.atk;
+        Archeranim = Archer.GetComponent<Animator>();
+        Archeranim.SetTrigger("atk");
         if (Enemyinfo.hp <= 0)
         {
             Destroy(Skeleton);
         }
+        Archeranim.SetTrigger("idle");
     }
 
     void AssassinAtk(GameObject Assassin, GameObject Skeleton, Assassin info, Skeleton Enemyinfo, int cnt)
     {
-
+        
         info = Assassin.GetComponent<Assassin>();
         Enemyinfo = Skeleton.GetComponent<Skeleton>();
 
@@ -442,12 +461,16 @@ public class StartGame : MonoBehaviour
         {
             info.atk = 1;
         }
-
+        
         Enemyinfo.hp -= info.atk;
+        Assassinanim.SetTrigger("atk");
         if (Enemyinfo.hp <= 0)
         {
             Destroy(Skeleton);
         }
+        Assassinanim.SetTrigger("idle");
+       
+        
     }
 
     void WizardAtk(GameObject Wizard, GameObject Skeleton, Wizard info, Skeleton Enemyinfo)
@@ -456,10 +479,16 @@ public class StartGame : MonoBehaviour
         Enemyinfo = Skeleton.GetComponent<Skeleton>();
 
         Enemyinfo.hp -= info.atk;
+
+        Wizardanim = Wizard.GetComponent<Animator>();
+        Wizardanim.SetTrigger("atk");
         if (Enemyinfo.hp <= 0)
         {
             Destroy(Skeleton);
         }
+        Wizardanim.SetTrigger("idle");
+        
+
     }
 
 
@@ -467,15 +496,20 @@ public class StartGame : MonoBehaviour
     {
         int cnt = 0;
         kinginfo = King.GetComponent<King>();
-        for(int i = 0; i < Skeleton.Length; i++)
+        Kinganim = GameObject.FindGameObjectWithTag("King").GetComponent<Animator>();
+
+        for (int i = 0; i < Skeleton.Length; i++)
         {
             Enemyinfo = Skeleton[i].GetComponent<Skeleton>();
         }
+
         for(int i = 0; i < Skeleton.Length; i++)
         {
             if (cnt % 2 == 0)
             {
                 Enemyinfo.hp -= kinginfo.atk;
+                
+                Kinganim.SetTrigger("atk");
             }
             else if(cnt%2!=0)
             {
@@ -488,7 +522,8 @@ public class StartGame : MonoBehaviour
             }
             cnt++;
         }
-                
+        Kinganim.SetTrigger("idle");
+
     }
 
     void SkeletonMove(GameObject Skeleton, GameObject[] knight, GameObject[] assassin, GameObject[] archer, GameObject[] wizard, GameObject[] king, GameObject[] hwang)
@@ -599,6 +634,8 @@ public class StartGame : MonoBehaviour
     void HwnagAtk(GameObject Hwang, GameObject player)
     {
         hwanginfo = Hwang.GetComponent<Hwang>();
+        Hwanganim = GameObject.FindGameObjectWithTag("Hwang").GetComponent<Animator>();
+        Hwanganim.SetTrigger("Hill");
         if (player.name == "knight")
         {
             knightinfo = player.GetComponent<Knight>();
@@ -631,6 +668,7 @@ public class StartGame : MonoBehaviour
             kinginfo = player.GetComponent<King>();
             kinginfo.atk += hwanginfo.atk;
         }
+        Hwanganim.SetTrigger("idle");
     }
 
     void SkeletonAtk(GameObject Skeleton, GameObject player, Knight knightinfo, Archer archerinfo, Assassin assassininfo, Wizard wizardinfo, Hwang hwanginfo, King kinginfo, Skeleton Enemyinfo)
@@ -692,14 +730,15 @@ public class StartGame : MonoBehaviour
                 Destroy(player);
             }
         }
+        Enemyanim = GameObject.FindGameObjectWithTag("skeleton").GetComponent<Animator>();
+        Enemyanim.SetTrigger("atk");
 
-
-        
     }
 
     IEnumerator defUpdate()
     {
         yield return new WaitForSeconds(1f);
         detectEnemy();
+
     }
 }

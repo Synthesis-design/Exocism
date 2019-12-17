@@ -6,4 +6,6 @@ public class Assassin : MonoBehaviour
 {
     public int hp = 3;
     public int atk = 1;
+
+
 }
