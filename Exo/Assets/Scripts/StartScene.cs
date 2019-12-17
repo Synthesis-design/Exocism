@@ -25,6 +25,7 @@ public class StartScene : MonoBehaviour
         if(SteminaNum<5)
         {
             time += Time.deltaTime;
+            
 
             if (time > 300.0f && time < 301.0f)
             {
