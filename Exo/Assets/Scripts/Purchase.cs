@@ -56,7 +56,6 @@ public class Purchase : MonoBehaviour
         for(int i=0;i<colls.Length;i++)
         {
             playerPos.y = playerPos.y - 1f;
-            Debug.Log(playerPos.y);
             if (playerPos.y < -2.5)
             {
                 playerPos.x = playerPos.x + 1f;
@@ -68,6 +67,7 @@ public class Purchase : MonoBehaviour
         player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+        player.AddComponent<Knight>();
 
         player.transform.position = playerPos;
 
@@ -121,6 +121,7 @@ public class Purchase : MonoBehaviour
         player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+        player.AddComponent<Wizard>();
 
         player.transform.position = playerPos;
 
@@ -173,6 +174,7 @@ public class Purchase : MonoBehaviour
         player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+        player.AddComponent<Archer>();
 
         player.transform.position = playerPos;
 
@@ -227,6 +229,7 @@ public class Purchase : MonoBehaviour
         player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+        player.AddComponent<Assassin>();
 
         player.transform.position = playerPos;
 
@@ -280,6 +283,7 @@ public class Purchase : MonoBehaviour
         player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+        player.AddComponent<Hwang>();
 
         player.transform.position = playerPos;
 
@@ -332,6 +336,7 @@ public class Purchase : MonoBehaviour
         player.AddComponent<BoxCollider>();
         player.GetComponent<SpriteRenderer>().material = Resources.Load("Outline", typeof(Material)) as Material;
         player.AddComponent<Drag>();
+        player.AddComponent<King>();
 
         player.transform.position = playerPos;
 

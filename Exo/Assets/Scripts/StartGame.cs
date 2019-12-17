@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
+    Knight knightinfo;
+    Archer archerinfo;
+    Wizard wizardinfo;
+    Hwang hwanginfo;
+    Assassin assassininfo;
+    King kinginfo;
+    Skeleton Enemyinfo;
     GameObject detect;
     Vector3[] detectPos; //적 감지 위치
     Vector3 changePos; //이동 거리
@@ -13,6 +20,7 @@ public class StartGame : MonoBehaviour
     float chAssassinDir = 1f;
     float chWizardDirx = 1f;
     float chWizardDiry = 1f;
+    float chSkelDir = -1f;
     int Jumpcnt = 0;
 
     void Start()
@@ -79,11 +87,26 @@ public class StartGame : MonoBehaviour
             }
         }
 
+        if (King != null)
+        {
+            for(int i = 0; i < King.Length; i++)
+            {
+                KingAtk(King[i], Skeleton);
+            }
+        }
+
+        for(int i = 0; i < Skeleton.Length; i++)
+        {
+            SkeletonMove(Skeleton[i], Knight, Assassin,Archer, Wizard, King, Hwang);
+        }
+        
+
         StartCoroutine(defUpdate());
     }
 
     void KnightMove(GameObject Knight, GameObject[] Skeleton)
     {
+        knightinfo = Knight.GetComponent<Knight>();
         changePos = Knight.transform.position;
         
         if (Knight.transform.position.x == 8.5f)
@@ -116,6 +139,7 @@ public class StartGame : MonoBehaviour
             {
                 if (Skeleton[t].transform.position == detectPos[k])
                 {
+                    KnightAtk(Knight, Skeleton[t], knightinfo, Enemyinfo);
                     return;
                 }
             }
@@ -249,7 +273,7 @@ public class StartGame : MonoBehaviour
             {
                 if (Skeleton[j].transform.position == detectPos[k])
                 {
-
+                    ArcherAtk(Archer, Skeleton[j], archerinfo, Enemyinfo);
                     return;
                 }
             }
@@ -279,7 +303,6 @@ public class StartGame : MonoBehaviour
         for(int k =0; k < 4; k++)
         {
             detectPos[k].x += k + 1f;
-            Debug.Log(detectPos[k]);
         }
         detectPos[4].x -= 1f;
 
@@ -293,13 +316,11 @@ public class StartGame : MonoBehaviour
                 {
                     if (Jumpcnt == 0 && Skeleton[t].transform.position.x!=8.5f && Skeleton[t].transform.position.x != -8.5f)
                     {
-                        detectPos[0] = Skeleton[t].transform.position;
-                        detectPos[0].x += 1f;
-                        Assassin.transform.position = detectPos[0];
                         Jumpcnt++;
-
+                        AssassinAtk(Assassin, Skeleton[t], assassininfo, Enemyinfo, Jumpcnt);
                         return;
                     }
+                    AssassinAtk(Assassin, Skeleton[t], assassininfo, Enemyinfo, Jumpcnt);
                     return;
                 }
             }
@@ -337,25 +358,35 @@ public class StartGame : MonoBehaviour
             detectPos[k].y += 1f;
         }
 
-        for(int k = 0; k < 3; k++)
+
+        for (int j = 0; j < 9; j++)
         {
-            for(int j = 0; j < 3; j++)
-            {
-                detectPos[k].x += k;
-                detectPos[j].y += j;
-            }
+            detectPos[j].x += j % 3;
+            detectPos[j].y -= j / 3;
         }
+
+        for( int i = 0; i < 9; i++)
+        {
+            Debug.Log(i);
+            Debug.Log(detectPos[i]);
+        }
+        
 
         changePos.x += chWizardDirx;
         changePos.y += chWizardDiry;
 
-        for (int t = 0; t < Skeleton.Length; t++)
+        for (int i = 0; i < Skeleton.Length; i++)
         {
             for (int k = 0; k < 9; k++)
             {
-                if (Skeleton[t].transform.position == detectPos[k])
+                if (Skeleton[i].transform.position == detectPos[k])
                 {
-                    return;
+                    changePos = Wizard.transform.position;
+                    WizardAtk(Wizard, Skeleton[i], wizardinfo, Enemyinfo);
+                    if (k==9)
+                    {
+                        return;
+                    }
                 }
             }
         }
@@ -364,9 +395,266 @@ public class StartGame : MonoBehaviour
 
     }
 
+    void KnightAtk(GameObject Knight, GameObject Skeleton, Knight info, Skeleton Enemyinfo)
+    {
+        info = Knight.GetComponent<Knight>();
+        Enemyinfo = Skeleton.GetComponent<Skeleton>();
+
+        Enemyinfo.hp -= info.atk;
+        if(Enemyinfo.hp <= 0)
+        {
+            Destroy(Skeleton);
+        }
+    }
+
+    void ArcherAtk(GameObject Archer, GameObject Skeleton, Archer info, Skeleton Enemyinfo)
+    {
+        info = Archer.GetComponent<Archer>();
+        Enemyinfo = Skeleton.GetComponent<Skeleton>();
+
+        Enemyinfo.hp -= info.atk;
+        if (Enemyinfo.hp <= 0)
+        {
+            Destroy(Skeleton);
+        }
+    }
+
+    void AssassinAtk(GameObject Assassin, GameObject Skeleton, Assassin info, Skeleton Enemyinfo, int cnt)
+    {
+
+        info = Assassin.GetComponent<Assassin>();
+        Enemyinfo = Skeleton.GetComponent<Skeleton>();
+
+        if(cnt == 1)
+        {
+            Assassin.transform.position = Skeleton.transform.position;
+            info.atk = 3;
+        }
+        else
+        {
+            info.atk = 1;
+        }
+
+        Enemyinfo.hp -= info.atk;
+        if (Enemyinfo.hp <= 0)
+        {
+            Destroy(Skeleton);
+        }
+    }
+
+    void WizardAtk(GameObject Wizard, GameObject Skeleton, Wizard info, Skeleton Enemyinfo)
+    {
+        info = Wizard.GetComponent<Wizard>();
+        Enemyinfo = Skeleton.GetComponent<Skeleton>();
+
+        Enemyinfo.hp -= info.atk;
+        if (Enemyinfo.hp <= 0)
+        {
+            Destroy(Skeleton);
+        }
+    }
+
+
+    void KingAtk(GameObject King, GameObject[] Skeleton)
+    {
+        int cnt = 0;
+        kinginfo = King.GetComponent<King>();
+        for(int i = 0; i < Skeleton.Length; i++)
+        {
+            Enemyinfo = Skeleton[i].GetComponent<Skeleton>();
+        }
+        for(int i = 0; i < Skeleton.Length; i++)
+        {
+            if (cnt % 2 == 0)
+            {
+                Enemyinfo.hp -= kinginfo.atk;
+            }
+            else if(cnt%2!=0)
+            {
+                return;
+            }
+
+            if (Enemyinfo.hp <= 0)
+            {
+                Destroy(Skeleton[i]);
+            }
+            cnt++;
+        }
+                
+    }
+
+    void SkeletonMove(GameObject Skeleton, GameObject[] knight, GameObject[] assassin, GameObject[] archer, GameObject[] wizard, GameObject[] king, GameObject[] hwang)
+    {
+        Enemyinfo = Skeleton.GetComponent<Skeleton>();
+        changePos = Skeleton.transform.position;
+
+        if (Skeleton.transform.position.x == 8.5f)
+        {
+
+            chSkelDir = -1f;
+        }
+        else if (Skeleton.transform.position.x == -8.5f)
+        {
+            chSkelDir = 1f;
+        }
+
+        for (int k = 0; k < 2; k++)
+        {
+            detectPos[k] = Skeleton.transform.position;
+        }
+
+        detectPos[0].x -= 1f;
+        detectPos[1].x -= 1f;
+        detectPos[2].x -= 1f;
+        detectPos[0].y += 1f;
+        detectPos[2].y -= 1f;
+        detectPos[3].x += 1f;
+
+        changePos.x += chSkelDir;
+
+        for (int t = 0; t < knight.Length; t++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (knight[t].transform.position == detectPos[k])
+                {
+                    SkeletonAtk(Skeleton, knight[t], knightinfo,archerinfo, assassininfo, wizardinfo, hwanginfo, kinginfo, Enemyinfo);
+                    return;
+                }
+            }
+        }
+
+        for (int t = 0; t < archer.Length; t++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (archer[t].transform.position == detectPos[k])
+                {
+                    SkeletonAtk(Skeleton, archer[t], knightinfo,archerinfo, assassininfo, wizardinfo, hwanginfo, kinginfo, Enemyinfo);
+                    return;
+                }
+            }
+        }
+
+        for (int t = 0; t < wizard.Length; t++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (wizard[t].transform.position == detectPos[k])
+                {
+                    SkeletonAtk(Skeleton, wizard[t], knightinfo, archerinfo, assassininfo, wizardinfo, hwanginfo, kinginfo, Enemyinfo);
+                    return;
+                }
+            }
+        }
+
+        for (int t = 0; t < assassin.Length; t++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (assassin[t].transform.position == detectPos[k])
+                {
+                    SkeletonAtk(Skeleton, assassin[t], knightinfo, archerinfo, assassininfo, wizardinfo, hwanginfo, kinginfo, Enemyinfo);
+                    return;
+                }
+            }
+        }
+
+        for (int t = 0; t < king.Length; t++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (king[t].transform.position == detectPos[k])
+                {
+                    SkeletonAtk(Skeleton, king[t], knightinfo, archerinfo, assassininfo, wizardinfo, hwanginfo, kinginfo, Enemyinfo);
+                    return;
+                }
+            }
+        }
+
+        for (int t = 0; t < hwang.Length; t++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (hwang[t].transform.position == detectPos[k])
+                {
+                    SkeletonAtk(Skeleton, hwang[t], knightinfo, archerinfo, assassininfo, wizardinfo, hwanginfo, kinginfo, Enemyinfo);
+                    return;
+                }
+            }
+        }
+
+        Skeleton.transform.position = changePos;
+
+    }
+
+    void SkeletonAtk(GameObject Skeleton, GameObject player, Knight knightinfo, Archer archerinfo, Assassin assassininfo, Wizard wizardinfo, Hwang hwanginfo, King kinginfo, Skeleton Enemyinfo)
+    {
+        Enemyinfo = Skeleton.GetComponent<Skeleton>();
+        Debug.Log(player.name);
+        if (player.name == "knight")
+        {
+            knightinfo = player.GetComponent<Knight>();
+            knightinfo.hp -= Enemyinfo.atk;
+            if (knightinfo.hp <= 0)
+            {
+                Destroy(player);
+            }
+        }
+        if (player.name == "Archer")
+        {
+            archerinfo = player.GetComponent<Archer>();
+            archerinfo.hp -= Enemyinfo.atk;
+            if (archerinfo.hp <= 0)
+            {
+                Destroy(player);
+            }
+        }
+        if (player.name == "Assassin")
+        {
+            assassininfo = player.GetComponent<Assassin>();
+            assassininfo.hp -= Enemyinfo.atk;
+            if (assassininfo.hp <= 0)
+            {
+                Destroy(player);
+            }
+        }
+        if (player.name == "Hwang")
+        {
+            hwanginfo = player.GetComponent<Hwang>();
+            hwanginfo.hp -= Enemyinfo.atk;
+            if (hwanginfo.hp <= 0)
+            {
+                Destroy(player);
+            }
+
+        }
+        if (player.name == "Wizard")
+        {
+            wizardinfo = player.GetComponent<Wizard>();
+            wizardinfo.hp -= Enemyinfo.atk;
+            if (wizardinfo.hp <= 0)
+            {
+                Destroy(player);
+            }
+        }
+        if (player.name == "King")
+        {
+            kinginfo = player.GetComponent<King>();
+            kinginfo.hp -= Enemyinfo.atk;
+            if (kinginfo.hp <= 0)
+            {
+                Destroy(player);
+            }
+        }
+
+
+        
+    }
+
     IEnumerator defUpdate()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         detectEnemy();
     }
 }
